@@ -4,6 +4,9 @@
 
 [[ $- != *i* ]] && return
 
+# Import colorscheme from 'wal'
+(cat ~/.cache/wal/sequences &)
+
 colors() {
 	local fgc bgc vals seq0
 

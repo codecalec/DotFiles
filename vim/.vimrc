@@ -8,7 +8,10 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'lervag/vimtex'
+Plug 'dylanaraps/wal'
 call plug#end()
+
+colorscheme wal
 
 let mapleader = " "
 

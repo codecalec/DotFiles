@@ -1,1 +1,2 @@
-export EDITOR=/usr/bin/nano
+export EDITOR=/usr/bin/vim
+export BROWSER=/usr/bin/firefox
