@@ -21,7 +21,7 @@ bindsym $mod+n border normal
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font xft:SourceCodePro-Regular:pixelsize=12
+font pango: Source Code Pro 13px
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
@@ -343,31 +343,30 @@ bar {
 	strip_workspace_numbers yes
 
     colors {
-        background #222D31
-        statusline #F9FAF9
-        separator  #454947
+    background #000000
+    statusline #FFFFFF
+    separator  #666666
 
-#                      border  backgr. text
-        focused_workspace  #F9FAF9 #16a085 #292F34
-        active_workspace   #595B5B #353836 #FDF6E3
-        inactive_workspace #595B5B #222D31 #EEE8D5
-        binding_mode       #16a085 #2C2C2C #F9FAF9
-        urgent_workspace   #16a085 #FDF6E3 #E5201D
-    }
+    focused_workspace  #6D2800 #CC0000 #FFFFFF
+    active_workspace   #333333 #222222 #FFFFFF
+    inactive_workspace #333333 #222222 #888888
+    urgent_workspace   #2F343A #9E9519 #FFFFFF
+    binding_mode       #2F343A #9E9519 #FFFFFF
+  }
 }
 
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
 
 # Theme colors
-# class                   border  backgr. text    indic.   child_border
-  client.focused          #556064 #556064 #80FFF9 #FDF6E3
-  client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
-  client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
-  client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
-  client.placeholder      #000000 #0c0c0c #ffffff #000000 
+# class                 border  bground text    indicator child_border
+client.focused          #6D2800 #CC0000 #FFFFFF #6D2800   #CC0000
+client.focused_inactive #333333 #4A4541 #FFFFFF #484E50   #5F676A
+client.unfocused        #333333 #222222 #888888 #292D2E   #222222
+client.urgent           #272B30 #9E9519 #FFFFFF #9E9519   #9E9519
+client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
 
-  client.background       #2B2C2B
+client.background       #000000
 
 #############################
 ### settings for i3-gaps: ###
