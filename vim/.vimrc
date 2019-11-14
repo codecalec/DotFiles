@@ -11,6 +11,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'lervag/vimtex'
 Plug 'dylanaraps/wal'
 Plug 'wellle/targets.vim'
+Plug 'davidhalter/jedi-vim'
 call plug#end()
 
 colorscheme wal
