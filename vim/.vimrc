@@ -8,10 +8,10 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'lervag/vimtex'
 Plug 'dylanaraps/wal'
 Plug 'wellle/targets.vim'
-Plug 'davidhalter/jedi-vim'
 call plug#end()
 
 colorscheme wal

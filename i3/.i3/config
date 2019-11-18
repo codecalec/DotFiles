@@ -1,6 +1,11 @@
 # i3 config file (v4)
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+#Set default resolution
+exec xrandr --output eDP-1 --auto --output HDMI-1 --auto --left-of eDP-1
+
+exec xrandr --output eDP-1-1 --auto --output HDMI-1-1 --auto --left-of eDP-1-1
+
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod1
 
@@ -206,9 +211,6 @@ for_window [class="GParted"] floating enable border normal
 for_window [title="i3_help"] floating enable sticky enable border normal
 for_window [class="Lightdm-settings"] floating enable
 for_window [class="Lxappearance"] floating enable sticky enable border normal
-for_window [class="Manjaro-hello"] floating enable
-for_window [class="Manjaro Settings Manager"] floating enable border normal
-for_window [title="MuseScore: Play Panel"] floating enable
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Oblogout"] fullscreen enable
 for_window [class="octopi"] floating enable
@@ -293,6 +295,7 @@ exec --no-startup-id blueman-applet
 # exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
 exec --no-startup-id xautolock -time 10 -locker blurlock
+exec --nostartup-id redshift-gtk -l --33.9:18.4
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
