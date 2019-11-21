@@ -12,9 +12,11 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'lervag/vimtex'
 Plug 'dylanaraps/wal'
 Plug 'wellle/targets.vim'
+Plug 'junegunn/goyo.vim'
 call plug#end()
 
 colorscheme wal
+let g:airline_theme='simple'
 
 "!Basic
 	set nocompatible
