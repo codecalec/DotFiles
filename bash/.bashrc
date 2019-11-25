@@ -4,8 +4,7 @@
 
 [[ $- != *i* ]] && return
 
-# Import colorscheme from 'wal'
-(cat ~/.cache/wal/sequences &)
+alias term="urxvt & disown"
 
 colors() {
 	local fgc bgc vals seq0

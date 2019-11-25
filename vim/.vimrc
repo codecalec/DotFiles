@@ -10,13 +10,9 @@ Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'lervag/vimtex'
-Plug 'dylanaraps/wal'
 Plug 'wellle/targets.vim'
 Plug 'junegunn/goyo.vim'
 call plug#end()
-
-colorscheme wal
-let g:airline_theme='simple'
 
 "!Basic
 	set nocompatible
@@ -52,9 +48,6 @@ let g:airline_theme='simple'
 
 " Makes search act like search in modern browsers
 	set incsearch
-
-" Add a bit extra margin to the left
-	set foldcolumn=1
 
 " Spellchecking
 	map <leader>s :setlocal spell! spelllang=en_gb<CR>

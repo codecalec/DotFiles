@@ -29,7 +29,7 @@ UXTerm*background:  #0a1124
 URxvt*cursorColor:  #edc59a
 XTerm*cursorColor:  #edc59a
 UXTerm*cursorColor: #edc59a
-URxvt*borderColor:  [90]#0a1124
+URxvt*borderColor:  [80]#0a1124
 
 ! Colors 0-15.
 *.color0: #0a1124
