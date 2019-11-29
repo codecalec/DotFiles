@@ -12,6 +12,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'lervag/vimtex'
 Plug 'wellle/targets.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'davidhalter/jedi-vim'
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 "!Basic
@@ -20,6 +22,7 @@ call plug#end()
 	filetype indent on
 	set number relativenumber
 	set mouse=a
+	set encoding=UTF-8
 
 " Fast saving
 	nmap <leader>w :w!<cr>

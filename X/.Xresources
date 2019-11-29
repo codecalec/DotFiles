@@ -6,75 +6,54 @@ Xft.autohint:  false
 Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
 
-XTerm*background:        #222D31
-XTerm*foreground:        #d8d8d8
-XTerm*pointerColor:      #1ABB9B
-XTerm*faceName:          Fixed
-XTerm*faceSize:          11
-XTerm*reverseVideo:      on
-XTerm*selectToClipboard: true
-
-*foreground:        #edc59a
-*background:        #0a1124
-*.foreground:       #edc59a
-*.background:       #0a1124
-emacs*foreground:   #edc59a
-emacs*background:   #0a1124
-URxvt*foreground:   #edc59a
-XTerm*foreground:   #edc59a
-UXTerm*foreground:  #edc59a
-URxvt*background:   [90]#0a1124
-XTerm*background:   #0a1124
-UXTerm*background:  #0a1124
-URxvt*cursorColor:  #edc59a
-XTerm*cursorColor:  #edc59a
-UXTerm*cursorColor: #edc59a
-URxvt*borderColor:  [80]#0a1124
-
-! Colors 0-15.
-*.color0: #0a1124
-*color0:  #0a1124
-*.color1: #a10010
-*color1:  #a10010
-*.color2: #ff1e37
-*color2:  #ff1e37
-*.color3: #ff000b
-*color3:  #ff000b
-*.color4: #ff4b38
-*color4:  #ff4b38
-*.color5: #ffa830
-*color5:  #ffa830
-*.color6: #ffd729
-*color6:  #ffd729
-*.color7: #edc59a
-*color7:  #edc59a
-*.color8: #a5896b
-*color8:  #a5896b
-*.color9: #a10010
-*color9:  #a10010
-*.color10: #ff1e37
-*color10:  #ff1e37
-*.color11: #ff000b
-*color11:  #ff000b
-*.color12: #ff4b38
-*color12:  #ff4b38
-*.color13: #ffa830
-*color13:  #ffa830
-*.color14: #ffd729
-*color14:  #ffd729
-*.color15: #edc59a
-*color15:  #edc59a
-
-! Black color that will not be affected by bold highlighting.
-*.color66: #0a1124
-*color66:  #0a1124
-
-Xcursor.theme: Premium
-Xcursor.size:                     0
-
 URxvt*font:                       xft:SourceCodePro:size=10,\
 				  xft:Sauce Code Pro Nerd Font:size=10,\
 				  xft:Sauce Code Pro Nerd Font Mono:size=10
+
+xterm*font:                       xft:SourceCodePro:size=10,\
+				  xft:Sauce Code Pro Nerd Font:size=10,\
+				  xft:Sauce Code Pro Nerd Font Mono:size=10
+
+! special
+*.foreground:   #ffffff
+*.background:   #000000
+*.cursorColor:  #ffffff
+URxvt.background:   [80]#000000
+
+! black
+*.color0:       #0a1124
+*.color8:       #1a1c24
+
+! red
+*.color1:       #a10010
+*.color9:       #a1464f
+
+! green
+*.color2:       #ff1e37
+*.color10:      #ff5165
+
+! yellow
+*.color3:       #ff000b
+*.color11:      #ff4c53
+
+! blue
+*.color4:       #ff4b38
+*.color12:      #ff7364
+
+! magenta
+*.color5:       #ffb44d
+*.color13:      #ffbe64
+
+! cyan
+*.color6:       #ffd729
+*.color14:      #ffe571
+
+! white
+*.color7:       #edb99a
+*.color15:      #edcebc
+
+
+
 
 URxvt*letterspace:		  -1
 
@@ -102,7 +81,7 @@ URxvt.keysym.Control-Down:        \033[1;5B
 URxvt.keysym.Shift-Control-Down:  \033[1;6B
 
 ! Changing font size in terminal
-URxvt.perl-ext-common:	resize-font
+URxvt.perl-ext-common:	resize-font,selection-to-clipboard,paste_clipboard
 
 ! Rxvt.perl-ext-common:             ...,clipboard
 ! URxvt.keysym.M-C-c:               perl:clipboard:copy

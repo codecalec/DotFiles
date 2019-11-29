@@ -10,7 +10,7 @@
     * tweaking my theme and having access to all of the colors here is handy. */
 
     base03: #002b36;
-    base02: #073642;
+    base02: #ff4b38;
     base01: #586e75;
     base00: #657b83;
     base0: #839496;
@@ -19,7 +19,7 @@
     base3: #fdf6e3;
     yellow: #b58900;
     orange: #cb4b16;
-    red: #dc322f;
+    red: #a10010;
     magenta: #d33682;
     violet: #6c71c4;
     blue: #268bd2;
@@ -29,7 +29,7 @@
     /* Solarized Darker Theme */
     transparent-background: rgba ( 0, 0, 0, 0 % );
     foreground:                  @red;
-    background:                  rgba ( 0, 0, 0, 90 % );
+    background:                  rgba ( 0, 0, 0, 80 % );
 
     normal-foreground:           @foreground;
     normal-background:           @transparent-background;
@@ -69,12 +69,12 @@ mainbox {
     padding: 0;
 }
 message {
-    border:       1px dash 0px 0px ;
+    border:       1px solid 0px 0px ;
     border-color: @separatorcolor;
     padding:      1px ;
 }
 textbox {
-    text-color: @foreground;
+    text-color: @yellow;
 }
 listview {
     fixed-height: 0;
