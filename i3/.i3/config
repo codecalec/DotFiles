@@ -314,7 +314,7 @@ bar {
     statusline #FFFFFF
     separator  #666666
 
-    focused_workspace  #6D2800 #CC0000 #FFFFFF
+    focused_workspace  #000000 #3465a4 #FFFFFF
     active_workspace   #333333 #222222 #FFFFFF
     inactive_workspace #333333 #222222 #888888
     urgent_workspace   #2F343A #9E9519 #FFFFFF
@@ -327,7 +327,7 @@ bindsym $mod+m bar mode toggle
 
 # Theme colors
 # class                 border  bground text    indicator child_border
-client.focused          #6D2800 #CC0000 #FFFFFF #6D2800   #CC0000
+client.focused          #6D2800 #3465a4 #FFFFFF #6D2800   #3465a4
 client.focused_inactive #333333 #4A4541 #FFFFFF #484E50   #5F676A
 client.unfocused        #333333 #222222 #888888 #292D2E   #222222
 client.urgent           #272B30 #9E9519 #FFFFFF #9E9519   #9E9519

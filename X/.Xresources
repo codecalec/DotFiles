@@ -21,39 +21,36 @@ xterm*font:                       xft:SourceCodePro:size=10,\
 URxvt.background:   [80]#000000
 
 ! black
-*.color0:       #0a1124
-*.color8:       #1a1c24
+*.color0:       #000000
+*.color8:       #555753
 
 ! red
-*.color1:       #a10010
-*.color9:       #a1464f
+*.color1:       #cc0000
+*.color9:       #ef2929
 
 ! green
-*.color2:       #ff1e37
-*.color10:      #ff5165
+*.color2:       #4e9a06
+*.color10:      #8ae234
 
 ! yellow
-*.color3:       #ff000b
-*.color11:      #ff4c53
+*.color3:       #c4a000
+*.color11:      #fce94f
 
 ! blue
-*.color4:       #ff4b38
-*.color12:      #ff7364
+*.color4:       #3465a4
+*.color12:      #729fcf
 
 ! magenta
-*.color5:       #ffb44d
-*.color13:      #ffbe64
+*.color5:       #75507b
+*.color13:      #ad7fa8
 
 ! cyan
-*.color6:       #ffd729
-*.color14:      #ffe571
+*.color6:       #06989a
+*.color14:      #34e2e2
 
 ! white
-*.color7:       #edb99a
-*.color15:      #edcebc
-
-
-
+*.color7:       #d3d7cf
+*.color15:      #eeeeec
 
 URxvt*letterspace:		  -1
 
@@ -62,8 +59,6 @@ URxvt*scrollBar:                  false
 URxvt*mouseWheelScrollPage:       false
 URxvt*cursorBlink:                true
 URxvt*saveLines:                  5000
-
-
 
 ! Normal copy-paste keybindings without perls
 URxvt.iso14755:                   false
