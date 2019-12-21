@@ -258,6 +258,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id blueman-applet
+exec --no-startup-id optimus-manager-qt
 exec --no-startup-id xautolock -time 10 -locker blurlock
 exec --no-startup-id redshift-gtk -l 33.9:18.4
 exec_always --no-startup-id ff-theme-util
