@@ -18,7 +18,7 @@ xterm*font:                       xft:SourceCodePro:size=10,\
 *.foreground:   #ffffff
 *.background:   #000000
 *.cursorColor:  #ffffff
-URxvt.background:   [90]#000000
+URxvt.background:   [80]#000000
 
 ! black
 *.color0:       #000000

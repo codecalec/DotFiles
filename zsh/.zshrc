@@ -6,6 +6,8 @@ setopt autocd notify
 bindkey -v
 # End of lines configured by zsh-newuser-install
 
+# Backwards search
+bindkey '^R' history-incremental-search-backward
 
 
 #Functions
@@ -16,7 +18,6 @@ over_ssh() {
         return 1
     fi
 }
-###
 
 # Not all servers have terminfo for rxvt-256color. :<
 if [ "${TERM}" = 'rxvt-256color' ] && ! [ -f '/usr/share/terminfo/r/rxvt-256color' ] && ! [ -f '/lib/terminfo/r/rxvt-256color' ] && ! [ -f "${HOME}/.terminfo/r/rxvt-256color" ]; then
@@ -50,7 +51,7 @@ case $USER in
     ;;
 
     *)
-        PROMPT='%B%F{blue}%n@%m%k %(?..%F{blue}[%F{253}%?%F{blue}] )${prompt_is_ssh}%B%F{cyan}%1~${git_prompt}%F{cyan} %# %b%f%k'
+        PROMPT='%B%F{blue}%n%f@%F{green}%m%k %(?..%F{blue}[%F{253}%?%F{blue}] )${prompt_is_ssh}%B%F{cyan}%1~${git_prompt}%F{cyan} %# %b%f%k'
 
     ;;
 esac
