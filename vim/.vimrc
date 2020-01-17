@@ -1,6 +1,7 @@
 "VIMRC.
 
 call plug#begin('~/.vim/plugged')
+Plug 'sainnhe/edge'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree'
@@ -10,12 +11,12 @@ Plug 'scrooloose/syntastic'
 Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'wellle/targets.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'ryanoasis/vim-devicons'
-Plug 'valloric/youcompleteme'
 Plug 'plasticboy/vim-markdown'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'npm install',
@@ -28,7 +29,7 @@ call plug#end()
     filetype indent on
     set number relativenumber
     set mouse=a
-    set encoding=UTF-8
+    set encoding=utf-8
 
 " Indentation
     set expandtab
@@ -63,7 +64,18 @@ call plug#end()
 " Spellchecking
     map <leader>s :setlocal spell! spelllang=en_gb<CR>
 
+
+" air-line
+    let g:airline_powerline_fonts = 1
+    let g:airline_theme = "fairyfloss"
+    let g:airline_right_sep = ""
+
+
 " Colors and Fonts
+    let g:edge_transparent_background = 1
+    let g:edge_style = 'neon'
+    colorscheme slate
+
     syntax enable
     set encoding=utf-8
 
@@ -95,6 +107,7 @@ call plug#end()
     let g:syntastic_auto_loc_list = 1
     let g:syntastic_check_on_open = 1
     let g:syntastic_check_on_wq = 0
+    let g:syntastic_python_checkers=['mypy']
 
 "LimeLight
     " Color name (:help cterm-colors) or ANSI code
