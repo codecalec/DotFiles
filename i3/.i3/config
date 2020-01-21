@@ -30,8 +30,7 @@ floating_modifier $mod
 bindsym $mod+Return exec i3-sensible-terminal
 
 # start browser
-bindsym $mod+Shift+Return exec firefox
-
+bindsym $mod+Shift+Return exec qutebrowser
 # kill focused window
 bindsym $mod+Shift+q kill
 

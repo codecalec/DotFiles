@@ -36,7 +36,7 @@ setopt correctall
 # Colour
 alias ls='ls --color=auto'
 
-#Prompt
+# Prompt
 if over_ssh && [ -z "${TMUX}" ]; then
     prompt_is_ssh='%F{blue}[%F{red}SSH%F{blue}] '
 elif over_ssh; then
@@ -56,7 +56,7 @@ case $USER in
     ;;
 esac
 
-#Git
+# Git
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
@@ -64,3 +64,9 @@ setopt prompt_subst
 RPROMPT=\$vcs_info_msg_0_
 zstyle ':vcs_info:git:*' formats '%F{240}(%b)%r%f'
 zstyle ':vcs_info:*' enable git
+
+# NNN
+export NNN_USE_EDITOR=1
+export NNN_SSHFS_OPTS="sshfs -o follow_symlinks"
+export NNN_CONTEXT_COLORS="2136"
+export NNN_TRASH=1
