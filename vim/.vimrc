@@ -1,7 +1,6 @@
 "VIMRC.
 
 call plug#begin('~/.vim/plugged')
-Plug 'sainnhe/edge'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree'
@@ -15,12 +14,9 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'wellle/targets.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-Plug 'davidhalter/jedi-vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'plasticboy/vim-markdown'
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'npm install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+Plug 'ycm-core/YouCompleteMe'
 call plug#end()
 
 "!Basic
@@ -30,6 +26,9 @@ call plug#end()
     set number relativenumber
     set mouse=a
     set encoding=utf-8
+
+" Cursor Speed
+    set ttyfast
 
 " Indentation
     set expandtab
@@ -64,34 +63,20 @@ call plug#end()
 " Spellchecking
     map <leader>s :setlocal spell! spelllang=en_gb<CR>
 
-
 " air-line
     let g:airline_powerline_fonts = 1
     let g:airline_theme = "fairyfloss"
     let g:airline_right_sep = ""
 
-
 " Colors and Fonts
-    let g:edge_transparent_background = 1
-    let g:edge_style = 'neon'
-    colorscheme slate
-
     syntax enable
     set encoding=utf-8
-
-" Open NERDTree automatically
-    autocmd StdinReadPre * let s:std_in=1
-    autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " Map key to toggle NERDTree
     map <leader>n :NERDTreeToggle<CR>
 
 " Close NERDTree with vim
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" Python
-" Run Python script
-    autocmd FileType python map E <Esc>:w<CR>:!clear;python %<CR>
 
 "Latex
 " Set tex flavour
@@ -103,11 +88,15 @@ call plug#end()
     let g:Tex_DefaultTargetFormat = 'pdf'
 
 "Syntastic
+    set statusline+=%#warningmsg#
+    set statusline+=%{SyntasticStatuslineFlag()}
+    set statusline+=%*
+
     let g:syntastic_always_populate_loc_list = 1
     let g:syntastic_auto_loc_list = 1
     let g:syntastic_check_on_open = 1
     let g:syntastic_check_on_wq = 0
-    let g:syntastic_python_checkers=['mypy']
+    let g:syntastic_python_checkers=['flake8']
 
 "LimeLight
     " Color name (:help cterm-colors) or ANSI code

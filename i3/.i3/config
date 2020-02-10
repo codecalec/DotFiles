@@ -27,27 +27,30 @@ font pango: RobotoMono Nerd Font Medium 11
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec alacritty
 
 # start browser
 bindsym $mod+Shift+Return exec firefox
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start program launcher
-bindsym $mod+d exec --no-startup-id rofi -show run
+ # start program launcher
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -o 0.8 -b -i -fn "Inconsolata Nerd Font-16" -nb #111111"
 
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
 
-exec --no-startup-id volumeicon
-bindsym $mod+Shift+m exec i3-sensible-terminal -e 'pulsemixer'
+bindsym $mod+Shift+m exec alacritty -e 'pulsemixer'
+
+bindsym XF86AudioRaiseVolume exec "pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ +10%"
+bindsym XF86AudioLowerVolume exec "pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ -10%"
+bindsym XF86AudioMute exec "pactl set-sink-mute @DEFAULT_SINK@ toggle"
 
 ################################################################################################
 
 # Media player controls
-#bindsym XF86AudioPlay exec playerctl play-pause
+bindsym $mod+p exec playerctl play-pause
 #bindsym XF86AudioPause exec playerctl play-pause
 #bindsym XF86AudioNext exec playerctl next
 #bindsym XF86AudioPrev exec playerctl previous
@@ -59,19 +62,19 @@ bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness 
 # Start Applications
 bindsym $mod+F1 exec firefox wiki.archlinux.org
 bindsym $mod+F2 exec firefox
-bindsym $mod+F3 exec i3-sensible-terminal -e ranger
+bindsym $mod+F3 exec alacritty -e ranger
 bindsym $mod+F4 exec spotify
-bindsym $mod+F5 exec i3-sensible-terminal -e cmus
+bindsym $mod+F5 exec alacritty -e cmus
 
 bindsym $mod+t exec --no-startup-id pkill compton
 bindsym $mod+Ctrl+t exec --no-startup-id compton -b
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print exec --no-startup-id i3-scrot
-bindsym $mod+Print --release exec --no-startup-id scrot
-bindsym $mod+Shift+Print --release exec --no-startup-id scrot -s
+bindsym $mod+Print --release exec --no-startup-id maim -s ~/Pictures/screenshot-$(date +%s).png
+bindsym $mod+Shift+Print --release exec --no-startup-id maim ~/Pictures/screenshot-$(date +%s).png
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
-focus_follows_mouse yes
+focus_follows_mouse no
 
 # change focus
 bindsym $mod+h focus left
@@ -245,10 +248,8 @@ mode "resize" {
 #bindsym $mod+9 exec --no-startup-id blurlock
 
 # Autostart applications
-
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
-exec --no-startup-id xfce4-power-manager
 exec --no-startup-id redshift -l 33.9:18.4
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
@@ -265,24 +266,24 @@ exec_always --no-startup-id fix_xcursor
 # to:
 # background $term_background
 # Same logic applied to everything else.
-set_from_resource $term_background background
-set_from_resource $term_foreground foreground
-set_from_resource $term_color0     color0
-set_from_resource $term_color1     color1
-set_from_resource $term_color2     color2
-set_from_resource $term_color3     color3
-set_from_resource $term_color4     color4
-set_from_resource $term_color5     color5
-set_from_resource $term_color6     color6
-set_from_resource $term_color7     color7
-set_from_resource $term_color8     color8
-set_from_resource $term_color9     color9
-set_from_resource $term_color10    color10
-set_from_resource $term_color11    color11
-set_from_resource $term_color12    color12
-set_from_resource $term_color13    color13
-set_from_resource $term_color14    color14
-set_from_resource $term_color15    color15
+#set_from_resource $term_background background
+#set_from_resource $term_foreground foreground
+#set_from_resource $term_color0     color0
+#set_from_resource $term_color1     color1
+#set_from_resource $term_color2     color2
+#set_from_resource $term_color3     color3
+#set_from_resource $term_color4     color4
+#set_from_resource $term_color5     color5
+#set_from_resource $term_color6     color6
+#set_from_resource $term_color7     color7
+#set_from_resource $term_color8     color8
+#set_from_resource $term_color9     color9
+#set_from_resource $term_color10    color10
+#set_from_resource $term_color11    color11
+#set_from_resource $term_color12    color12
+#set_from_resource $term_color13    color13
+#set_from_resource $term_color14    color14
+#set_from_resource $term_color15    color15
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 

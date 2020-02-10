@@ -1,19 +1,10 @@
 ;==========================================================
-;
-;
 ;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
 ;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
 ;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
 ;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
 ;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
 ;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
-;
-;
-;   To learn more about how to configure Polybar
-;   go to https://github.com/polybar/polybar
-;
-;   The README contains a lot of information
-;
 ;==========================================================
 
 [colors]
@@ -30,18 +21,18 @@ blank = #000f0f0f
 
 
 [bar/main]
-monitor = ${env:MONITOR:eDP1}
+monitor = ${env:MONITOR:eDP-1}
 width = 100%
-height = 28
-;offset-x = 1%
-;offset-y = 1%
+height = 3%
+offset-x = 0
+offset-y = 0
 radius = 6.0
-fixed-center = false
+fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 3
+line-size = 2
 line-color = #f00
 
 border-size = 4
@@ -51,16 +42,16 @@ padding-left = 2
 padding-right = 2
 
 module-margin-left = 1
-module-margin-right = 2
+module-margin-right = 1
 
-font-0 = Hack Nerd Font:pixelsize=13;1
+font-0 = Inconsolata Nerd Font:pixelsize=16;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
-modules-left = filesystem pulseaudio memory cpu
+modules-left = filesystem pulseaudio backlight-acpi memory cpu spotify
 modules-center = i3
 ;modules-center = mpd
-modules-right = wlan eth battery system-bluetooth-bluetoothctl date powermenu
+modules-right = wlan eth battery-combined-shell system-bluetooth-bluetoothctl date powermenu
 
 tray-position = right
 tray-padding = 1
@@ -78,16 +69,16 @@ scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
 
 cursor-click = pointer
-cursor-scroll = ns-resize
+cursor-scroll = default
 
 [bar/secondary]
-monitor = ${env:MONITOR:HDMI1}
+monitor = ${env:MONITOR:HDMI-2}
 width = 100%
 height = 28
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 6.0
-fixed-center = false
+fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -111,7 +102,7 @@ font-2 = siji:pixelsize=10;1
 modules-left = filesystem pulseaudio memory cpu
 modules-center = i3
 ;modules-center = mpd
-modules-right = wlan eth battery system-bluetooth-bluetoothctl date powermenu
+modules-right = wlan eth battery-combined-shell system-bluetooth-bluetoothctl date powermenu
 
 tray-position = right
 tray-padding = 1
@@ -129,7 +120,7 @@ scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
 
 cursor-click = pointer
-cursor-scroll = ns-resize
+cursor-scroll = default
 
 [module/xwindow]
 type = internal/xwindow
@@ -218,25 +209,26 @@ icon-next = 
 label-song-maxlen = 25
 label-song-ellipsis = true
 
-[module/xbacklight]
-type = internal/xbacklight
+[module/backlight]
+type = internal/backlight
 
 format = <label> <bar>
-label = BL
+label = 
 
 bar-width = 10
-bar-indicator = |
+bar-indicator = 
 bar-indicator-foreground = #fff
 bar-indicator-font = 2
-bar-fill = ─
+bar-fill = 
 bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
+bar-fill-foreground = ${colors.primary}
+bar-empty = 
 bar-empty-font = 2
 bar-empty-foreground = ${colors.foreground-alt}
+enable-scroll = true
 
 [module/backlight-acpi]
-inherit = module/xbacklight
+inherit = module/backlight
 type = internal/backlight
 card = intel_backlight
 
@@ -258,7 +250,7 @@ label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = wlp0s20f3
+interface = wlp3s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
@@ -314,7 +306,7 @@ label = %date% %time%
 type = internal/pulseaudio
 
 format-volume = <label-volume> <bar-volume>
-label-volume = VOL
+label-volume = 墳
 label-volume-foreground = ${root.foreground}
 
 label-muted =  muted
@@ -329,11 +321,11 @@ bar-volume-foreground-4 = #55aa55
 bar-volume-foreground-5 = #f5a70a
 bar-volume-foreground-6 = #ff5555
 bar-volume-gradient = false
-bar-volume-indicator = |
+bar-volume-indicator = 
 bar-volume-indicator-font = 2
-bar-volume-fill = ─
+bar-volume-fill = 
 bar-volume-fill-font = 2
-bar-volume-empty = ─
+bar-volume-empty = 
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
@@ -369,7 +361,7 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 type = internal/battery
 battery = BAT0
 adapter = ADP0
-full-at = 98
+full-at = 95
 
 format-charging-prefix = " "
 format-charging-underline = ${colors.primary}
@@ -380,17 +372,6 @@ format-discharging-underline = ${self.format-charging-underline}
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
-
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
-animation-discharging-foreground = ${colors.foreground-alt}
-animation-discharging-framerate = 750
 
 [module/powermenu]
 type = custom/menu
@@ -428,6 +409,20 @@ tail = true
 click-left = ~/.config/polybar/system-bluetooth-bluetoothctl.sh --toggle &
 format-underline = ${colors.primary}
 
+[module/spotify]
+type = custom/script
+interval = 1
+format-prefix = " "
+format = <label>
+exec = python ~/.config/polybar/spotify_status.py -f '{artist}: {song}'
+format-underline = ${colors.primary}
+
+[module/battery-combined-shell]
+type = custom/script
+exec = ~/.config/polybar/battery-combined-shell.sh
+format-underline = ${colors.primary}
+interval = 10
+
 [module/padding]
 type               = custom/text
 content            = ||
@@ -444,7 +439,7 @@ screenchange-reload = true
 ;pseudo-transparency = false
 
 [global/wm]
-margin-top = 5
-margin-bottom = 5
+margin-top = 0
+margin-bottom = 0
 
 ; vim:ft=dosini
