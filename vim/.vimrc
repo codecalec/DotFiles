@@ -5,18 +5,19 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
 Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'wellle/targets.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'plasticboy/vim-markdown'
 Plug 'ycm-core/YouCompleteMe'
+Plug 'psf/black'
 call plug#end()
 
 "!Basic
@@ -63,14 +64,15 @@ call plug#end()
 " Spellchecking
     map <leader>s :setlocal spell! spelllang=en_gb<CR>
 
-" air-line
-    let g:airline_powerline_fonts = 1
-    let g:airline_theme = "fairyfloss"
-    let g:airline_right_sep = ""
-
 " Colors and Fonts
     syntax enable
     set encoding=utf-8
+    colorscheme default
+
+" Airline
+    let g:airline_extensions = ['vimtex','ycm','syntastic']
+    let g:airline_powerline_fonts = 1
+    let g:airline_theme='fruit_punch'
 
 " Map key to toggle NERDTree
     map <leader>n :NERDTreeToggle<CR>
@@ -98,11 +100,13 @@ call plug#end()
     let g:syntastic_check_on_wq = 0
     let g:syntastic_python_checkers=['flake8']
 
-"LimeLight
-    " Color name (:help cterm-colors) or ANSI code
-    let g:limelight_conceal_ctermfg = 'gray'
-    let g:limelight_conceal_ctermfg = 240
+" Formatting
 
-    " Color name (:help gui-colors) or RGB color
-    let g:limelight_conceal_guifg = 'DarkGray'
-    let g:limelight_conceal_guifg = '#777777'
+    let g:black_linelength = 79
+    autocmd BufWritePre *.py execute ':Black'
+    nnoremap <leader>f :Black<CR>
+
+"Fix Mouse with Alacritty
+set ttymouse=sgr
+
+

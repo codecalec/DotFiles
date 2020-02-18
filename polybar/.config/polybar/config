@@ -14,7 +14,7 @@ background-alt = #444
 foreground = ${xrdb:color7:#222}
 #foreground = #dfdfdf
 foreground-alt = #555
-primary = ${xrdb:color2:#222}
+primary = ${xrdb:color1:#222}
 secondary = ${xrdb:color4:#222}
 alert = ${xrdb:color1:#222}
 blank = #000f0f0f
@@ -24,25 +24,26 @@ blank = #000f0f0f
 monitor = ${env:MONITOR:eDP-1}
 width = 100%
 height = 3%
-offset-x = 0
-offset-y = 0
+;offset-x = 1%
+;offset-y = 1%
 radius = 6.0
 fixed-center = true
+border-bottom-size = 1
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 2
+line-size = 3
 line-color = #f00
 
-border-size = 4
+border-size = 10
 border-color = #00000000
 
 padding-left = 2
 padding-right = 2
 
 module-margin-left = 1
-module-margin-right = 1
+module-margin-right = 2
 
 font-0 = Inconsolata Nerd Font:pixelsize=16;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
@@ -74,11 +75,12 @@ cursor-scroll = default
 [bar/secondary]
 monitor = ${env:MONITOR:HDMI-2}
 width = 100%
-height = 28
+height = 3%
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 6.0
 fixed-center = true
+border-bottom-size = 1
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -86,7 +88,7 @@ foreground = ${colors.foreground}
 line-size = 3
 line-color = #f00
 
-border-size = 4
+border-size = 10
 border-color = #00000000
 
 padding-left = 2
@@ -95,7 +97,7 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = RobotoMono Nerd Font:pixelsize=13:style=medium;1
+font-0 = Inconsolata Nerd Font:pixelsize=16;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
@@ -313,13 +315,13 @@ label-muted =  muted
 label-muted-foreground = #666
 
 bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
+bar-volume-foreground-0 = ${colors.secondary}
+;bar-volume-foreground-1 = ${colors.secondary}
+;bar-volume-foreground-2 = #55aa55
+;bar-volume-foreground-3 = #55aa55
+;bar-volume-foreground-4 = #55aa55
+;bar-volume-foreground-5 = #f5a70a
+;bar-volume-foreground-6 = #ff5555
 bar-volume-gradient = false
 bar-volume-indicator = 
 bar-volume-indicator-font = 2

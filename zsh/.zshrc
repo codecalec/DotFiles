@@ -51,7 +51,7 @@ case $USER in
     ;;
 
     *)
-        PROMPT='%B%F{blue}%n%f@%F{green}%m%k %(?..%F{blue}[%F{253}%?%F{blue}] )${prompt_is_ssh}%B%F{cyan}%1~${git_prompt}%F{cyan} %# %b%f%k'
+        PROMPT='%B%F{blue}%n%f@%F{red}%m%k %(?..%F{blue}[%F{253}%?%F{blue}] )${prompt_is_ssh}%B%F{cyan}%1~${git_prompt}%F{cyan} %# %b%f%k'
 
     ;;
 esac

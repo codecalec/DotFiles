@@ -30,12 +30,12 @@ floating_modifier $mod
 bindsym $mod+Return exec alacritty
 
 # start browser
-bindsym $mod+Shift+Return exec firefox
+bindsym $mod+Shift+Return exec qutebrowser
 # kill focused window
 bindsym $mod+Shift+q kill
 
  # start program launcher
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -o 0.8 -b -i -fn "Inconsolata Nerd Font-16" -nb #111111"
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -o 0.8 -b -i -fn 'Inconsolata Nerd Font-16' -nb '#111111' -sb '#FA2E3A'"
 
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
@@ -333,8 +333,10 @@ exec_always --no-startup-id fix_xcursor
 #############################
 
 # Set inner/outer gaps
-gaps inner 14
-gaps outer -2
+#gaps inner 14
+#gaps outer -2
+gaps inner 10
+gaps outer 20
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>

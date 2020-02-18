@@ -19,7 +19,7 @@ URxvt.background:   #000000
 *.color8:       #555753
 
 ! red
-*.color1:       #cc0000
+*.color1:       #FA2E3A
 *.color9:       #ef2929
 
 ! green
@@ -31,7 +31,7 @@ URxvt.background:   #000000
 *.color11:      #fce94f
 
 ! blue
-*.color4:       #3465a4
+*.color4:       #486EAC
 *.color12:      #729fcf
 
 ! magenta
