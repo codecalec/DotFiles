@@ -5,19 +5,19 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/syntastic'
 Plug 'jiangmiao/auto-pairs'
+Plug 'machakann/vim-swap'
 Plug 'airblade/vim-gitgutter'
 Plug 'wellle/targets.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'plasticboy/vim-markdown'
+Plug 'lervag/vimtex'
+Plug 'scrooloose/syntastic'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'psf/black'
+Plug 'joshdick/onedark.vim'
 call plug#end()
 
 "!Basic
@@ -27,6 +27,8 @@ call plug#end()
     set number relativenumber
     set mouse=a
     set encoding=utf-8
+    command! Vimrc :vs $HOME/.vimrc
+
 
 " Cursor Speed
     set ttyfast
@@ -61,19 +63,34 @@ call plug#end()
 " Makes search act like search in modern browsers
     set incsearch
 
+" Allows persistent undo
+    set undofile
+
 " Spellchecking
     map <leader>s :setlocal spell! spelllang=en_gb<CR>
 
 " Colors and Fonts
     syntax enable
     set encoding=utf-8
-    colorscheme default
+    colorscheme onedark
+    if (empty($TMUX))
+        if (has("termguicolors"))
+            set termguicolors
+        endif
+    endif
+    set background=dark
+    highlight Normal guibg=NONE guifg=white
 
-" Airline
-    let g:airline_extensions = ['vimtex','ycm','syntastic']
-    let g:airline_powerline_fonts = 1
-    let g:airline_theme='fruit_punch'
+"" Airline
+    "let g:airline_extensions = ['vimtex','ycm','syntastic']
+    "let g:airline_powerline_fonts = 1
+    "let g:airline_theme='simple'
 
+"lightline
+    set laststatus=2
+    let g:lightline = {
+      \ 'colorscheme': 'onedark',
+      \ }
 " Map key to toggle NERDTree
     map <leader>n :NERDTreeToggle<CR>
 

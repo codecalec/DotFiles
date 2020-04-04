@@ -6,9 +6,10 @@ setopt autocd notify
 bindkey -v
 # End of lines configured by zsh-newuser-install
 
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 # Backwards search
 bindkey '^R' history-incremental-search-backward
-
 
 #Functions
 over_ssh() {
@@ -64,9 +65,3 @@ setopt prompt_subst
 RPROMPT=\$vcs_info_msg_0_
 zstyle ':vcs_info:git:*' formats '%F{240}(%b)%r%f'
 zstyle ':vcs_info:*' enable git
-
-# NNN
-export NNN_USE_EDITOR=1
-export NNN_SSHFS_OPTS="sshfs -o follow_symlinks"
-export NNN_CONTEXT_COLORS="2136"
-export NNN_TRASH=1
