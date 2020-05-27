@@ -18,6 +18,7 @@ Plug 'scrooloose/syntastic'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'psf/black'
 Plug 'joshdick/onedark.vim'
+Plug 'JuliaEditorSupport/julia-vim'
 call plug#end()
 
 "!Basic
@@ -26,9 +27,11 @@ call plug#end()
     filetype indent on
     set number relativenumber
     set mouse=a
-    set encoding=utf-8
+    set ttymouse=sgr
     command! Vimrc :vs $HOME/.vimrc
 
+" Splits
+    set splitbelow splitright
 
 " Cursor Speed
     set ttyfast
@@ -81,6 +84,12 @@ call plug#end()
     set background=dark
     highlight Normal guibg=NONE guifg=white
 
+" Remaps
+    vnoremap J :m '>+1<CR>gv=gv
+    vnoremap K :m '<-2<CR>gv=gv
+
+    map <Leader>tt :vert<CR>term<CR>
+
 "" Airline
     "let g:airline_extensions = ['vimtex','ycm','syntastic']
     "let g:airline_powerline_fonts = 1
@@ -116,14 +125,10 @@ call plug#end()
     let g:syntastic_check_on_open = 1
     let g:syntastic_check_on_wq = 0
     let g:syntastic_python_checkers=['flake8']
+    let g:syntastic_tex_lacheck_quiet_messages = { 'regex': '\VYou should enclose the previous parenthesis with' }
 
 " Formatting
 
     let g:black_linelength = 79
     autocmd BufWritePre *.py execute ':Black'
     nnoremap <leader>f :Black<CR>
-
-"Fix Mouse with Alacritty
-set ttymouse=sgr
-
-

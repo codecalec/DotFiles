@@ -8,8 +8,16 @@ bindkey -v
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# Faster mode switching
+export KEYTIMEOUT=1
+
 # Backwards search
 bindkey '^R' history-incremental-search-backward
+
+# Better searching in command mode
+bindkey -M vicmd '?' history-incremental-search-backward
+bindkey -M vicmd '/' history-incremental-search-forward
+
 
 #Functions
 over_ssh() {
@@ -31,17 +39,28 @@ autoload -Uz compinit
 compinit
 zstyle ':completion:*' menu select
 
-# Correction
-setopt correctall
-
 # Colour
 alias ls='ls --color=auto'
 
 # Prompt
+
+autoload -U promptinit
+
+# Updates editor information when the keymap changes.
+function zle-keymap-select() {
+  zle reset-prompt
+}
+
+zle -N zle-keymap-select
+
+function vi_mode_prompt_info() {
+  echo "${${KEYMAP/vicmd/[% VI]%}/(main|viins)/}"
+}
+
 if over_ssh && [ -z "${TMUX}" ]; then
-    prompt_is_ssh='%F{blue}[%F{red}SSH%F{blue}] '
+    prompt_is_ssh='%F{blue}[%F{green}SSH%F{blue}]'
 elif over_ssh; then
-    prompt_is_ssh='%F{blue}[%F{253}SSH%F{blue}] '
+    prompt_is_ssh='%F{blue}[%F{253}SSH%F{blue}]'
 else
     unset prompt_is_ssh
 fi
@@ -52,7 +71,7 @@ case $USER in
     ;;
 
     *)
-        PROMPT='%B%F{blue}%n%f@%F{red}%m%k %(?..%F{blue}[%F{253}%?%F{blue}] )${prompt_is_ssh}%B%F{cyan}%1~${git_prompt}%F{cyan} %# %b%f%k'
+        PROMPT='%B%F{blue}%n%f@%F{green}%m%k $(vi_mode_prompt_info) %(?..%F{blue}[%F{253}%?%F{blue}] )${prompt_is_ssh}%B%F{cyan}%1~${git_prompt}%F{cyan} %# %b%f%k'
 
     ;;
 esac

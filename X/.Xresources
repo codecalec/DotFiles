@@ -24,7 +24,7 @@ URxvt.background:   #000000
 
 ! green
 *.color2:       #4e9a06
-*.color10:      #8ae234
+*.color10:      #84BD30
 
 ! yellow
 *.color3:       #c4a000
