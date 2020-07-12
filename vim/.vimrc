@@ -18,7 +18,7 @@ Plug 'scrooloose/syntastic'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'psf/black'
 Plug 'joshdick/onedark.vim'
-Plug 'JuliaEditorSupport/julia-vim'
+Plug 'dpelle/vim-LanguageTool'
 call plug#end()
 
 "!Basic
@@ -29,6 +29,11 @@ call plug#end()
     set mouse=a
     set ttymouse=sgr
     command! Vimrc :vs $HOME/.vimrc
+
+" Reduce mode switch delay
+    set timeoutlen=1000
+    set ttimeoutlen=5
+
 
 " Splits
     set splitbelow splitright
@@ -69,8 +74,12 @@ call plug#end()
 " Allows persistent undo
     set undofile
 
+" Unnamed register paste shortcut
+    nmap <leader>p "+p
+
 " Spellchecking
     map <leader>s :setlocal spell! spelllang=en_gb<CR>
+    let g:languagetool_jar = '/usr/share/java/languagetool/languagetool-commandline.jar'
 
 " Colors and Fonts
     syntax enable
@@ -114,6 +123,7 @@ call plug#end()
 
     let g:Tex_ViewRule_pdf = 'zathura'
     let g:Tex_DefaultTargetFormat = 'pdf'
+    autocmd FileType tex :map <F3> :w !detex \| wc -w<CR>
 
 "Syntastic
     set statusline+=%#warningmsg#

@@ -50,7 +50,7 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
 modules-left = pulseaudio spotify
-modules-center = ewmh
+modules-center = i3
 ;modules-center = mpd
 modules-right = wlan eth battery-combined-shell  date powermenu
 
@@ -102,7 +102,7 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
 modules-left = pulseaudio  system-bluetooth-bluetoothctl
-modules-center = ewmh
+modules-center = i3
 ;modules-center = mpd
 modules-right = wlan eth battery-combined-shell date powermenu
 

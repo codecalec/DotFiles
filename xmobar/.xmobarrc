@@ -3,7 +3,7 @@
 Config {
 
    -- appearance
-     font =         "xft:FuraCode Nerd Font:size=12:bold:antialias=true"
+     font =         "xft:FuraCode Nerd Font:style=Retina:size=12:bold:antialias=true"
    , bgColor =      "black"
    , fgColor =      "#646464"
    , position =     Top

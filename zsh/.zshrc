@@ -54,7 +54,7 @@ function zle-keymap-select() {
 zle -N zle-keymap-select
 
 function vi_mode_prompt_info() {
-  echo "${${KEYMAP/vicmd/[% VI]%}/(main|viins)/}"
+  echo "${${KEYMAP/vicmd/[% VI]%}/(main|viins)/}"
 }
 
 if over_ssh && [ -z "${TMUX}" ]; then
@@ -71,7 +71,7 @@ case $USER in
     ;;
 
     *)
-        PROMPT='%B%F{blue}%n%f@%F{green}%m%k $(vi_mode_prompt_info) %(?..%F{blue}[%F{253}%?%F{blue}] )${prompt_is_ssh}%B%F{cyan}%1~${git_prompt}%F{cyan} %# %b%f%k'
+        PROMPT='%B%F{blue}%n%f@%F{green}%m%k $(vi_mode_prompt_info) %(?..%F{blue}[%F{253}%?%F{blue}] )${prompt_is_ssh}%B%F{cyan}%1~${git_prompt}%F{cyan} %b%f%k'
 
     ;;
 esac

@@ -12,7 +12,6 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Layout.Spacing
---import XMonad.Layout.Fullscreen
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
 import XMonad.Util.NamedScratchpad
@@ -28,7 +27,7 @@ import qualified Data.Map        as M
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "alacritty"
+myTerminal      = "st"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -156,7 +155,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((0                 , xF86XK_MonBrightnessDown), spawn "xbacklight -dec 10")
 
     , ((modm .|. shiftMask, xK_s), namedScratchpadAction myScratchPads "mixer")
-    , ((modm .|. shiftMask, xK_p), namedScratchpadAction myScratchPads "spotify")]
+    , ((modm .|. shiftMask, xK_p), namedScratchpadAction myScratchPads "spotify")
+    , ((modm .|. shiftMask, xK_b), namedScratchpadAction myScratchPads "bluetooth")]
     ++
 
     --
@@ -239,45 +239,44 @@ myLayout = avoidStruts $ spacing $ (tiled ||| Mirror tiled ||| Full)
 -- 'className' and 'resource' are used below.
 --
 myManageHook = composeAll
-    [
-    --fullscreenManageHook
-    className =? "mpv"        --> doFloat
+    [ namedScratchpadManageHook myScratchPads
+    , className =? "mpv"            --> doFloat
     , className =? "Gimp"           --> doFloat
+    --, resource  =? "spotify"        --> doFloat
     , resource  =? "desktop_window" --> doIgnore
-    , resource  =? "kdesktop"       --> doIgnore
-    , namedScratchpadManageHook myScratchPads]
+    , resource  =? "kdesktop"       --> doIgnore]
 
 ------------------------------------------------------------------------
 -- Scratchpad
 myScratchPads = [ NS "mixer"    spawnMixer findMixer manageMixer
                 , NS "spotify"  spawnSpotify findSpotify manageSpotify
+                , NS "bluetooth" spawnBluetooth findBluetooth manageBluetooth
                 ]
 
   where
-
     spawnMixer  = myTerminal ++ " -e pulsemixer" -- launch my mixer
     findMixer   = title =? "pulsemixer" -- its window has title "pulsemixer"
-    manageMixer = customFloating $ W.RationalRect l t w h -- and I'd like it fixed using the geometry below:
-
+    manageMixer = customFloating $ W.RationalRect l t w h
       where
-
-        h = 0.3       -- height, 30%
-        w = 0.3       -- width, 30%
+        h = 0.5       -- height, 30%
+        w = 0.5       -- width, 30%
         t = (1 - h)/2 -- centered top/bottom
         l = (1 - w)/2 -- centered left/right
 
-    spawnSpotify  = "spotify"
-    findSpotify   = resource  =? "spotify" -- its window will be named "scratchpad" (see above)
-    manageSpotify = customFloating $ W.RationalRect l t w h -- and I'd like it fixed using the geometry below
-
+    spawnSpotify  = myTerminal ++ " -c spotify -e ncspot"
+    findSpotify   = title  =? "ncspot"
+    manageSpotify = customFloating $ W.RationalRect l t w h
       where
-
         -- reusing these variables is ok since they're confined to their own
         -- where clauses
         h = 0.6 -- height, 10%
         w = 0.6 -- width, 100%
-        t = 1 - h    -- bottom edge
+        t = (1 - h)/2    -- bottom edge
         l = (1 - w)/2 -- centered left/right
+
+    spawnBluetooth = "blueman-manager"
+    findBluetooth = resource =? "blueman-manager"
+    manageBluetooth = defaultFloating
 
 
 ------------------------------------------------------------------------
@@ -308,8 +307,9 @@ myLogHook = return ()
 --
 -- By default, do nothing.
 myStartupHook = do
-    spawn "feh --bg-scale Pictures/vincentiu-solomon-Z4wF0h47fy8-unsplash.jpg; sleep 1; compton -b"
+    spawn "feh --bg-scale Pictures/vincentiu-solomon-Z4wF0h47fy8-unsplash.jpg; sleep 0.1; compton -b"
     spawn "setxkbmap -option caps:swapescape"
+    spawn "xinput --set-prop $(xinput list --id-only 'SteelSeries SteelSeries Rival 700 Gaming Mouse') 'libinput Accel Profile Enabled' 0, 1"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
