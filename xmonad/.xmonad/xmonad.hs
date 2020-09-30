@@ -221,7 +221,10 @@ myLayout = avoidStruts $ spacing $ (tiled ||| Mirror tiled ||| Full)
     -- Percent of screen to increment by when resizing panes
     delta   = 3/100
 
-    spacing = spacingRaw False (Border 10 10 10 10) True (Border 10 10 10 10) True
+    spacing = spacingRaw False (Border i i i i) True (Border j j j j) True
+      where
+        i = 8
+        j = 5
 
 ------------------------------------------------------------------------
 -- Window rules:

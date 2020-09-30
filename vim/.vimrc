@@ -1,25 +1,27 @@
 "VIMRC.
 
 call plug#begin('~/.vim/plugged')
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+"Plug 'tpope/vim-fugitive'
+"Plug 'tpope/vim-surround'
+"Plug 'scrooloose/nerdtree'
+"Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
-Plug 'machakann/vim-swap'
 Plug 'airblade/vim-gitgutter'
 Plug 'wellle/targets.vim'
+Plug 'ajh17/VimCompletesMe'
 Plug 'ryanoasis/vim-devicons'
-Plug 'plasticboy/vim-markdown'
-Plug 'lervag/vimtex'
+Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'scrooloose/syntastic'
-Plug 'ycm-core/YouCompleteMe'
-Plug 'psf/black'
-Plug 'joshdick/onedark.vim'
-Plug 'dpelle/vim-LanguageTool'
+"Plug 'ycm-core/YouCompleteMe'
+Plug 'psf/black', {'for': 'python'}
+Plug 'morhetz/gruvbox'
+Plug 'rust-lang/rust.vim', {'for': 'rust'}
+Plug 'kamykn/spelunker.vim', {'for': 'tex'}
 call plug#end()
+
+source ~/.workman/vimrc
 
 "!Basic
     set nocompatible
@@ -27,7 +29,11 @@ call plug#end()
     filetype indent on
     set number relativenumber
     set mouse=a
-    set ttymouse=sgr
+
+    if !has('nvim')
+        set ttymouse=sgr
+    endif
+
     command! Vimrc :vs $HOME/.vimrc
 
 " Reduce mode switch delay
@@ -47,13 +53,15 @@ call plug#end()
     set softtabstop=4
 
 " Copy Pasting
-    :set clipboard=unnamed
+    set clipboard+=unnamedplus
 
 " Enable Autocompletion
     set wildmode=longest,list,full
 
 " Automatically deletes all trailing whitespace on save.
     autocmd BufWritePre * %s/\s\+$//e
+
+ :
 
 " Configure backspace so it acts as it should act
     set backspace=eol,start,indent
@@ -79,35 +87,19 @@ call plug#end()
 
 " Spellchecking
     map <leader>s :setlocal spell! spelllang=en_gb<CR>
-    let g:languagetool_jar = '/usr/share/java/languagetool/languagetool-commandline.jar'
 
-" Colors and Fonts
+
+" Colours and Fonts
     syntax enable
     set encoding=utf-8
-    colorscheme onedark
-    if (empty($TMUX))
-        if (has("termguicolors"))
-            set termguicolors
-        endif
-    endif
-    set background=dark
-    highlight Normal guibg=NONE guifg=white
-
-" Remaps
-    vnoremap J :m '>+1<CR>gv=gv
-    vnoremap K :m '<-2<CR>gv=gv
-
-    map <Leader>tt :vert<CR>term<CR>
-
-"" Airline
-    "let g:airline_extensions = ['vimtex','ycm','syntastic']
-    "let g:airline_powerline_fonts = 1
-    "let g:airline_theme='simple'
+    let g:gruvbox_italic=1
+    colorscheme gruvbox
+    set background=dark    " Setting dark mode
 
 "lightline
     set laststatus=2
     let g:lightline = {
-      \ 'colorscheme': 'onedark',
+      \ 'colorscheme': 'gruvbox',
       \ }
 " Map key to toggle NERDTree
     map <leader>n :NERDTreeToggle<CR>
@@ -118,7 +110,7 @@ call plug#end()
 "Latex
 " Set tex flavour
     "set grepprg=grep\ -nH\ $*
-    "let g:tex_flavor = "latex"
+    let g:tex_flavor = "latex"
     au FileType tex let b:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"'}
 
     let g:Tex_ViewRule_pdf = 'zathura'
@@ -138,7 +130,6 @@ call plug#end()
     let g:syntastic_tex_lacheck_quiet_messages = { 'regex': '\VYou should enclose the previous parenthesis with' }
 
 " Formatting
-
     let g:black_linelength = 79
     autocmd BufWritePre *.py execute ':Black'
     nnoremap <leader>f :Black<CR>

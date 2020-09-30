@@ -58,9 +58,9 @@ function vi_mode_prompt_info() {
 }
 
 if over_ssh && [ -z "${TMUX}" ]; then
-    prompt_is_ssh='%F{blue}[%F{green}SSH%F{blue}]'
+    prompt_is_ssh='%F{blue}[%F{green}SSH%F{blue}] '
 elif over_ssh; then
-    prompt_is_ssh='%F{blue}[%F{253}SSH%F{blue}]'
+    prompt_is_ssh='%F{blue}[%F{253}SSH%F{blue}] '
 else
     unset prompt_is_ssh
 fi
